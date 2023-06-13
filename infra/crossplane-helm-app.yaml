@@ -8,17 +8,22 @@ spec:
     namespace: crossplane-system
   source:
     chart: crossplane
-    repoURL: 'https://charts.crossplane.io/stable'
+    repoURL: https://charts.crossplane.io/stable
     targetRevision: 1.12.1
-    helm:
+    helm: 
       parameters:
         - name: values
           value: |
             {{- include "crossplane.global" . | nindent 2 }}
             {{- include "crossplane.values" . | nindent 2 }}
-
   project: default
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+  preSync:
+    - strategicMerge:
+        kind: Namespace
+        apiVersion: v1
+        metadata:
+          name: crossplane-system
