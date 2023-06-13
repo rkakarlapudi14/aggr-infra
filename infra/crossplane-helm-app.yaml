@@ -15,7 +15,7 @@ spec:
             {{- include "crossplane.values" . | nindent 2 }}
       chart: crossplane
       repoURL: 'https://charts.crossplane.io/stable'
-      targetRevision: ""
+      targetRevision: 1.12.1
   project: default
   syncPolicy:
     automated:
