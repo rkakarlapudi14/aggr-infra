@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/rkakarlapudi14/aggr-infra.git
     targetRevision: main
-    path: /infra
+    path: infra
   project: default
   syncPolicy:
     automated:
