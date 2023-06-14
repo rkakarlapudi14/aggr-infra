@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-helm-app
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  source:
+    chart: crossplane
+    repoURL: https://charts.crossplane.io/stable
+    targetRevision: 1.12.1
+    helm:
+      parameters:
+        - name: values
+          value: |
+            {{- include "crossplane.global" . | nindent 2 }}
+            {{- include "crossplane.values" . | nindent 2 }}
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  preSync:
+    - strategicMerge:
+        kind: Namespace
+        apiVersion: v1
+        metadata:
+          name: crossplane-system
