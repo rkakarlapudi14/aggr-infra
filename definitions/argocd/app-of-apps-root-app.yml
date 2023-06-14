@@ -11,6 +11,6 @@ spec:
     name: in-cluster
   project: default
   source:
-    path: apps
+    path: .
     repoURL: https://github.com/rkakarlapudi14/aggr-infra
     targetRevision: HEAD
