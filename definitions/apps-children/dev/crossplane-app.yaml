@@ -52,7 +52,7 @@ spec:
       serviceAccountName: crossplane
       containers:
         - name: crossplane
-          image: crossplane/crossplane:latest
+          image: crossplane/crossplane:1.12.1
           ports:
             - containerPort: 80
               name: http
