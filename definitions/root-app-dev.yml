@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: core-app
+  name: root-appbundle-app-dev
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -9,8 +9,8 @@ spec:
   destination:
     namespace: default
     name: in-cluster
-  project: default
+  project: appbundle-project-dev
   source:
-    path: definitions
+    path: definitions/apps-children/dev
     repoURL: https://github.com/rkakarlapudi14/aggr-infra
     targetRevision: HEAD
