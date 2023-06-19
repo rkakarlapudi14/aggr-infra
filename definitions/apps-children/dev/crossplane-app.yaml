@@ -1,107 +1,36 @@
-apiVersion: v1
-kind: Namespace
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
-  name: crossplane-system
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: crossplane
-  namespace: crossplane-system
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: crossplane
-rules:
-  - apiGroups:
-      - ''
-    resources:
-      - '*'
-    verbs:
-      - '*'
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: crossplane
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: crossplane
-subjects:
-  - kind: ServiceAccount
-    name: crossplane
+  name: crossplane-helm-app
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
     namespace: crossplane-system
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: crossplane
-  namespace: crossplane-system
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: crossplane
-  template:
-    metadata:
-      labels:
-        app: crossplane
-    spec:
-      serviceAccountName: crossplane
-      containers:
-        - name: crossplane
-          image: crossplane/crossplane:1.12.1
-          ports:
-            - containerPort: 80
-              name: http
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: crossplane
-  namespace: crossplane-system
-spec:
-  ports:
-    - port: 80
-      targetPort: http
-      protocol: TCP
-  selector:
-    app: crossplane
-
-
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: crossplane-helm-app
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: crossplane-system
-#   source:
-#     chart: crossplane
-#     repoURL: https://charts.crossplane.io/stable
-#     targetRevision: 1.12.1
-#     helm:
-#       parameters:
-#         - name: values
-#           value: |
-#             {{- include "crossplane.global" . | nindent 2 }}
-#             {{- include "crossplane.values" . | nindent 2 }}
-#   project: default
-#   syncPolicy:
-#     syncOptions:
-#       - CreateNamespace=true
-#     automated:
-#       prune: true
-#       selfHeal: true
+    name: in-cluster
+  project: appbundle-project-dev
+  source:
+    chart: crossplane
+    repoURL: https://charts.crossplane.io/stable
+    targetRevision: 1.12.1
+    helm:
+      parameters:
+        - name: values
+          value: |
+            {{- include "crossplane.global" . | nindent 2 }}
+            {{- include "crossplane.values" . | nindent 2 }}
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
   # preSync:
   #   - strategicMerge:
   #       kind: Namespace
   #       apiVersion: v1
   #       metadata:
   #         name: crossplane-system
-
 
 
