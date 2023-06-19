@@ -26,8 +26,8 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    labels:
-      app: crossplane-cluster-management
+    # labels:
+    #   app: crossplane-cluster-management
   # preSync:
   #   - strategicMerge:
   #       kind: Namespace
