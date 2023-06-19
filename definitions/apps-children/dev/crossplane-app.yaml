@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: Crossplane Cluster Management
-  namespace: default
+  name: crossplane-helm-app
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: default
+    namespace: crossplane-system
     name: in-cluster
   project: appbundle-project-dev
   source:
     chart: crossplane
     repoURL: https://charts.crossplane.io/stable
-    targetRevision: latest
+    targetRevision: 1.12.1
     helm:
       parameters:
         - name: values
