@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: Crossplane Cluster Management
-  namespace: crossplane-system
+  namespace: default
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: crossplane-system
+    namespace: default
     name: in-cluster
   project: appbundle-project-dev
   source:
