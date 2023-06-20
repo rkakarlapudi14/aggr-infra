@@ -18,11 +18,24 @@ spec:
       parameters:
         - name: values
           value: |
-            {{- include "crossplane.global" . | nindent 2 }}
-            {{- include "crossplane.values" . | nindent 2 }}
+            crossplane:
+              global:
+                version: 1.2.0
+                providers:
+                  aws:
+                    enabled: true
+                    region: us-east-1
+              values:
+                replicas: 3
+                resources:
+                  limits:
+                    cpu: "500m"
+                    memory: "512Mi"
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
     automated:
       prune: true
       selfHeal: true
+
+
