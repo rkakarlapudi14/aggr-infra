@@ -1,1 +1,16 @@
-# values.yaml
+crossplane:
+  global:
+    version: 1.2.0
+    providers:
+      aws:
+        enabled: true
+        region: us-east-1
+      gcp:
+        enabled: false
+
+  values:
+    replicas: 3
+    resources:
+      limits:
+        cpu: "500m"
+        memory: "512Mi"
