@@ -26,13 +26,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    # labels:
-    #   app: crossplane-cluster-management
-  # preSync:
-  #   - strategicMerge:
-  #       kind: Namespace
-  #       apiVersion: v1
-  #       metadata:
-  #         name: crossplane-system
-
-
