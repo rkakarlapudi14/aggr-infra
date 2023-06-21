@@ -11,16 +11,17 @@ spec:
     name: in-cluster
   project: appbundle-project-dev
   source:
+    chart: upbound-provider-aws
+    targetRevision: 0.27.0
+    repository: https://charts.upbound.io/stable
     helm:
-      chart: upbound-provider-aws
-      version: 0.27.0
-      repository: https://charts.upbound.io/stable
-  values:
-    - key: provider
-      value: |
-        apiVersion: pkg.crossplane.io/v1
-        kind: Provider
-        metadata:
-          name: upbound-provider-aws
-        spec:
-          package: xpkg.upbound.io/upbound/provider-aws:v0.27.0
+      parameters:
+        values:
+          - key: provider
+            value: |
+              apiVersion: pkg.crossplane.io/v1
+              kind: Provider
+              metadata:
+                name: upbound-provider-aws
+              spec:
+                package: xpkg.upbound.io/upbound/provider-aws:v0.27.0
