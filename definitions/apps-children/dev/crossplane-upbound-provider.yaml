@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-upbound-aws-provider
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: crossplane-system
+    name: in-cluster
+  project: appbundle-project-dev
+  source:
+    repoURL: 'https://github.com/upbound/upbound-registry'
+    path: '/provider-aws'
+    targetRevision: 'v0.27.0'
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+
+
