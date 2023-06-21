@@ -12,11 +12,11 @@ spec:
   project: appbundle-project-dev
   source:
     chart: upbound-provider-aws
-    targetRevision: 0.27.0
+    targetRevision: 0.1.0
     repoURL: https://charts.upbound.io/stable
     helm:
       values: |
-        provider: |
+        provider:
           apiVersion: pkg.crossplane.io/v1
           kind: Provider
           metadata:
