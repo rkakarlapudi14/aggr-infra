@@ -1,0 +1,59 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane-provider
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: crossplane-system
+    name: in-cluster
+  project: appbundle-project-dev
+  source:
+    chart: crossplane
+    repoURL: https://charts.crossplane.io/stable
+    targetRevision: 1.12.1
+    helm:
+      parameters:
+        - name: values
+          value: |
+            crossplane:
+              global:
+                version: 1.2.0
+                providers:
+                  aws:
+                    enabled: true
+                    region: us-east-1
+              values:
+                replicas: 3
+                resources:
+                  limits:
+                    cpu: "500m"
+                    memory: "512Mi"
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
+
+
+
+
+
+
+
+
+
+
+
+
+cat <<EOF | kubectl apply -f -
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: upbound-provider-aws
+spec:
+  package: xpkg.upbound.io/upbound/provider-aws:v0.27.0
+EOF
