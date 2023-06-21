@@ -15,12 +15,11 @@ spec:
     targetRevision: 0.27.0
     repoURL: https://charts.upbound.io/stable
     helm:
-      - name: provider
-        value: |
+      values:
+        provider: |
           apiVersion: pkg.crossplane.io/v1
           kind: Provider
           metadata:
             name: upbound-provider-aws
           spec:
             package: xpkg.upbound.io/upbound/provider-aws:v0.27.0
-
