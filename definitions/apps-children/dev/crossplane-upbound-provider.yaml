@@ -12,7 +12,7 @@ spec:
   project: appbundle-project-dev
   source:
     chart: upbound-provider-aws
-    targetRevision: 1.12.1
+    targetRevision: HEAD
     repoURL: https://charts.upbound.io/stable
     helm:
       parameters:
