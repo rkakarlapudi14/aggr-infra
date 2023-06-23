@@ -1,0 +1,12 @@
+# path/to/helm-charts/upbound-provider-aws-chart.yaml
+apiVersion: pkg.crossplane.io/v1
+kind: HelmChart
+metadata:
+  name: upbound-provider-aws
+spec:
+  chart: upbound-provider-aws
+  version: 0.1.0
+  values:
+    - name: provider.package
+      value: xpkg.upbound.io/upbound/provider-aws:v0.27.0
+

@@ -11,12 +11,10 @@ spec:
     name: in-cluster
   project: appbundle-project-dev
   source:
-    chart: upbound-provider-aws
+    repoURL: https://github.com/rkakarlapudi14/aggr-infra
+    path: definitions/apps-children/dev
     targetRevision: HEAD
-    repoURL: https://charts.upbound.io/stable
-    helm:
-      parameters:
-        - name: provider-aws.version
-          value: v0.27.0
-
-
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
