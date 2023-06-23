@@ -13,6 +13,7 @@ items:
     spec:
       package: xpkg.upbound.io/upbound/provider-aws:v0.27.0
 
+  # comment
   - apiVersion: aws.upbound.io/v1beta1
     kind: ProviderConfig
     metadata:
