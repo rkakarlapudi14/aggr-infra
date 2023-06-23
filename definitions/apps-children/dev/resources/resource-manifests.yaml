@@ -9,7 +9,7 @@ items:
   - apiVersion: s3.aws.upbound.io/v1beta1
     kind: Bucket
     metadata:
-      generateName: crossplane-bucket-xcdb-variance
+      name: crossplane-bucket-xcdb-variance
       labels:
         docs.crossplane.io/example: provider-aws
     spec:
