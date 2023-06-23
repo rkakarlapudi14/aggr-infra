@@ -12,7 +12,7 @@ spec:
   project: appbundle-project-dev
   source:
     repoURL: https://github.com/rkakarlapudi14/aggr-infra
-    path: definitions/apps-children/dev
+    path: definitions/apps-children/dev/packages
     targetRevision: HEAD
   syncPolicy:
     automated:
