@@ -1,3 +1,2 @@
 # aggr-infra
 
-# example
