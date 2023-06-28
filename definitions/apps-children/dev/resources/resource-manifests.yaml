@@ -18,9 +18,9 @@ items:
       name: crossplane-vpc-xsample
       labels:
         docs.crossplane.io/example: provider-aws
-    spec:
-      cidrBlock: 10.0.0.0/16
+    spec:      
       forProvider:
         region: us-east-1
+        cidrBlock: 10.0.0.0/16
       providerConfigRef:
         name: upbound-provider-aws-config
