@@ -27,6 +27,5 @@ items:
       providerConfigRef:
         name: upbound-provider-aws-config
       publishConnectionDetails:
-        - key: vpc-id
-          valueFrom:
-            jsonPath: "{.status.AtProvider.Id}"
+          name: testscope
+
