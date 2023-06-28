@@ -29,4 +29,4 @@ items:
       publishConnectionDetails:
         - key: vpc-id
           valueFrom:
-            jsonPath: "{.status.vpcId}"
+            jsonPath: "{.status.AtProvider.Id}"
