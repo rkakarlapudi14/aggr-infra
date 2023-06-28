@@ -24,3 +24,6 @@ items:
         cidrBlock: 10.0.0.0/16
       providerConfigRef:
         name: upbound-provider-aws-config
+      tags:
+        - key: Name
+          value: crossplane-vpc-xsample
