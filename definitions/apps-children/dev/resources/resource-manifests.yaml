@@ -23,10 +23,6 @@ items:
         region: us-east-1
         cidrBlock: 10.0.0.0/16
         tags:
-          - key: Name
-            value: crossplane-vpc-xsample
+          Name: crossplane-vpc-xsample
       providerConfigRef:
         name: upbound-provider-aws-config
-        tags:
-          - key: Name
-            value: crossplane-vpc-xsample
