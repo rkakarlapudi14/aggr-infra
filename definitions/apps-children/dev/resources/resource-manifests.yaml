@@ -30,5 +30,3 @@ items:
         - key: vpc-id
           valueFrom:
             jsonPath: "{.status.vpcId}"
-      configRef:
-        name: upbound-provider-aws-config
