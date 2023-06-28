@@ -26,6 +26,6 @@ items:
           Name: crossplane-vpc-xsample
       providerConfigRef:
         name: upbound-provider-aws-config
-      publishConnectionDetails:
-          name: testscope
+      # publishConnectionDetails:
+      #     name: testscope
 
