@@ -27,6 +27,6 @@ items:
           cost_center: c100
       providerConfigRef:
         name: upbound-provider-aws-config
-      publishConnectionDetailsWithStoreConfigRef:
-          name: testscope
+      # publishConnectionDetailsWithStoreConfigRef:
+      #     name: testscope
 
