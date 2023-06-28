@@ -12,3 +12,15 @@ items:
         region: us-east-1
       providerConfigRef:
         name: upbound-provider-aws-config
+  - apiVersion: ec2.aws.crossplane.io/v1beta1
+    kind: VPC
+    metadata:
+      name: crossplane-vpc-xsample
+      labels:
+        docs.crossplane.io/example: provider-aws
+    spec:
+      cidrBlock: 10.0.0.0/16
+      forProvider:
+        region: us-east-1
+      providerConfigRef:
+        name: upbound-provider-aws-config
