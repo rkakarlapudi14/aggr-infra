@@ -12,7 +12,7 @@ items:
         region: us-east-1
       providerConfigRef:
         name: upbound-provider-aws-config
-  - apiVersion: ec2.aws.upbound.iov1beta1
+  - apiVersion: ec2.aws.upbound.io/v1beta1
     kind: VPC
     metadata:
       name: crossplane-vpc-xsample
