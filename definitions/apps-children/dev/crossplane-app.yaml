@@ -13,14 +13,14 @@ spec:
   source:
     chart: crossplane
     repoURL: https://charts.crossplane.io/stable
-    targetRevision: 1.12.1
+    targetRevision: HEAD
     helm:
       parameters:
         - name: values
           value: |
             crossplane:
               global:
-                version: 1.2.0
+                version: 1.15.0
                 providers:
                   aws:
                     enabled: true
